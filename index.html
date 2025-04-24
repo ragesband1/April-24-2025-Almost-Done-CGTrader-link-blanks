@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5x2, 5x3, and 3x3 Flexbox Background Column Sections</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #4CAF50; /* Kulay ng header */
+            color: white; /* Kulay ng font */
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            height: calc(100vh - 280px); /* Hatiin ang taas sa viewport at lahat ng headers */
+        }
+
+        .column {
+            position: relative; /* Para sa reflection effect */
+            flex: 1 0 20%; /* 5 kategorya, kaya 20% bawat isa (5x2 at 5x3 sections) */
+            border: 1px solid #ccc; /* Optional, para sa separation */
+            box-sizing: border-box; /* Isama ang border sa taas */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer; /* Para sa hover effect */
+            transition: background-color 0.3s, transform 0.2s; /* Smooth transition effect */
+            border-radius: 10px; /* Slightly rounded corners */
+            overflow: hidden; /* Para sa glow effect */
+        }
+
+        /* Mga kulay para sa 1st column section (red with neon glow) */
+        .column-red {
+            background-color: lightcoral; /* Pula */
+        }
+
+        /* Mga kulay para sa 2nd column section (orange with neon glow) */
+        .column-orange {
+            background-color: orange; /* Kahel */
+        }
+
+        .container-large {
+            flex: 1 0 33.33%; /* 3 column sa 3x3 layout */
+        }
+
+        .container-3x3 {
+            display: flex; /* I-enable ang flexbox */
+            flex-wrap: wrap; /* I-wrap ang mga column */
+            height: calc(100vh - 80px); /* Tungkulin ng taas ng bagong container */
+        }
+
+        .column-3x3 {
+            flex: 1 0 33.33%; /* 3 column para sa 3x3 layout */
+            background-color: lightgoldenrodyellow; /* Dilaw na kulay */
+            border: 1px solid #ccc; /* Optional, para sa separation */
+            box-sizing: border-box; /* Isama ang border sa taas */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer; /* Para sa hover effect */
+            transition: background-color 0.3s, transform 0.2s; /* Smooth transition effect */
+            border-radius: 10px; /* Slightly rounded corners */
+            overflow: hidden; /* Para sa glow effect */
+        }
+
+        /* Mga kulay para sa 4th column section (green with neon glow) */
+        .column-green {
+            background-color: lightgreen; /* Berde */
+        }
+
+        /* Neon glow effect and hover */
+        .column:hover,
+        .column-3x3:hover {
+            background-color: rgba(0, 255, 255, 0.5); /* Transparent cyan */
+            animation: glow 1s infinite alternate; /* Neon glow effect */
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+            }
+            100% {
+                box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+            }
+        }
+
+        /* Resize effect */
+        .column:active,
+        .column-3x3:active {
+            transform: scale(1.05); /* Slightly enlarge only in corners on click */
+        }
+
+        /* Reflection effect */
+        .column:hover::after,
+        .column-3x3:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background-color: rgba(0, 255, 255, 0.5); /* Reflection color */
+            opacity: 0.5; /* Transparency of reflection */
+            transform: translateY(100%); /* Sa ibaba ng column */
+            transition: transform 0.3s; /* Smooth transition for reflection */
+        }
+    </style>
+    <script>
+        function showDialog(title) {
+            const links = {
+                'cgtrader.com 1-67': ['Link 1', 'Link 2', 'Link 3'],
+                'cgtrader.com 10 elemental gems': ['Link 11', 'Link 12', 'Link 13'],
+                'cgtrader.com 69-93': ['Link 21', 'Link 22', 'Link 23'],
+                'cgtrader.com environment slides': ['Link 31', 'Link 32', 'Link 33']
+            };
+            const linkList = links[title] || [];
+            const message = `List ng links para sa ${title}:\n` + linkList.join('\n');
+            alert(message);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header">cgtrader.com 1-67</div>
+    <div class="container">
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">1. 🌄 Terrain/Base Mesh:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">2. 🌍 Setting Description:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">3. 🌐 Key Locations:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">4. 🎯 Gameplay Vision (Bonus Concept):</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">5. 💡 Styling Guidelines:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">6. 📌 Theme:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">7. 📸 Submission Plan:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">8. 🔧 Technical Notes:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">9. 🧙‍♂️ Lore Snippet:</div>
+        <div class="column column-red" onclick="showDialog('cgtrader.com 1-67')">10. 🛠️ Props (3-5 Minimum):</div>
+    </div>
+
+    <div class="header">cgtrader.com 10 elemental gems</div>
+    <div class="container container-large">
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">💎 1. Plutonium – Doom Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">👻 2. Radon – Phantom Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">☠️ 3. Polonium – Assassin Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">🔥 4. Cesium – Liquid Fire Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">🌌 5. Ununpentium – Reality Shatter Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">🪨 6. Osmium – Crushing Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">⚡ 7. Francium – Chain Reaction Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">☀️ 8. Thorium – Sunlight Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">🌊 9. Neptunium – Ocean Slayer Gem</div>
+        <div class="column column-orange" onclick="showDialog('cgtrader.com 10 elemental gems')">💀 10. Californium – Atomic Curse Gem</div>
+    </div>
+
+    <div class="header">cgtrader.com 69-93</div>
+    <div class="container container-3x3">
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🌍 1. World Concept / Environment Overview</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🌑 2. Terrain / Base Mesh:</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🎮 3. Environment Design Elements for Blender Project</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🔧 4. Bonus Ideas (for Extra Credit!):</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🧙‍♂️ 5. Special Lore Objects (Optional for detailing):</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🧠 6. REMINDERS:</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🧱 7. Props (Choose 3–5 Minimum):</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">🧾 8. Art Style & Technical Guidelines</div>
+        <div class="column-3x3" onclick="showDialog('cgtrader.com 69-93')">⚙️ 9. Render from these 4 angles:</div>
+    </div>
+
+    <div class="header">cgtrader.com environment slides</div>
+    <div class="container">
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">📌 1. Scene Components Ideas (3D Environment)</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">📌 2. Visual References</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">📸 3. CAMERA & LIGHTING SUGGESTIONS</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🎨 4. CONCEPT ART SUMMARY (NO CHARACTERS)</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🌆 5. ENVIRONMENT SETTING & THEME</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🎮 6. GAMEPLAY NEEDS (Environment Focus)</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🔍 7. LOW-POLY STYLIZATION NOTES</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🌌 8. MOOD & ATMOSPHERE</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🎨 9. MOOD BOARD COLORS & MATERIALS</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🌍 10. REAL-WORLD INSPIRATION (FOR VISUAL MOOD)</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">🛠️ 11. RECOMMENDED 3D PROPS FOR BLENDER SCENE</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">📚 12. REFERENCE & INSPIRATIONS</div>
+        <div class="column column-green" onclick="showDialog('cgtrader.com environment slides')">⏳ 13. TIME PERIOD</div>
+    </div>
+</body>
+
+</html>
